@@ -1,10 +1,13 @@
 from flask import Flask, request, render_template, jsonify
-from flask_cors import CORS  # เพิ่มการนำเข้า
 from emotion_model import predict_emotion
 import requests
+import os
+from dotenv import load_dotenv
+
+# โหลดค่าตัวแปรจากไฟล์ .env
+load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # เพิ่มบรรทัดนี้เพื่ออนุญาต CORS
 
 @app.route('/')
 def index():
@@ -21,8 +24,8 @@ def search_song():
     # ตรวจจับอารมณ์จากข้อความที่ผู้ใช้พิมพ์
     emotion = predict_emotion(user_input)
 
-    # ใช้ Client Access Token เป็น API Key
-    api_key = "Kny_lrpNvJp60Azp_87xYJa-TnXkl35nfIh6weHBE3n8oHK7pSWO4Q7zWiVlj_Td"
+    # ใช้ Client Access Token เป็น API Key จากไฟล์ .env
+    api_key = os.getenv("GENIUS_API_KEY")
     base_url = "https://api.genius.com/search"
     headers = {
         "Authorization": f"Bearer {api_key}"
@@ -45,4 +48,4 @@ def search_song():
         return jsonify({"error": "เกิดข้อผิดพลาดในการค้นหา"}), response.status_code
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)  # กำหนดพอร์ตที่ต้องการ
