@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS  # เพิ่มการนำเข้า
 from emotion_model import predict_emotion
 import requests
 
 app = Flask(__name__)
+CORS(app)  # เพิ่มบรรทัดนี้เพื่ออนุญาต CORS
 
 @app.route('/')
 def index():
