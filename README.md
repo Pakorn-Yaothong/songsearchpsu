@@ -105,31 +105,6 @@ http://127.0.0.1:5000/
 
 ---
 
-## 📂 Project Structure
-
-```
-workflow262/
-├── app.py
-├── emotion_model.py
-├── requirements.txt
-├── procfile
-├── templates/
-│   └── index.html  # contains the web form and JavaScript for calling /search_song
-└── README.md
-```
-
----
-
-## 🏗️ Future Improvements
-
-* Add **better emotion detection** (e.g., ML classifier)
-* Add **song preview** (YouTube, Spotify links)
-* Add **user history** / search log
-* Improve **UI/UX** styling
-* Add **unit tests**
-
----
-
 ## 👨‍💼 Author
 
 **Pakorn Yaothong**
@@ -140,6 +115,3 @@ GitHub: [https://github.com/Pakorn-Yaothong](https://github.com/Pakorn-Yaothong)
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
-
-```
-```
